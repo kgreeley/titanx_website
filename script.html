@@ -20,30 +20,41 @@
             transition: background 0.5s;
         }
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             padding: 20px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Add a dark overlay for better text visibility */
+            z-index: 1;
         }
-        nav {
+        header .container {
+            position: relative;
+            z-index: 2;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: var(--secondary-color);
+            color: var(--text-color);
+            animation: slideInLeft 1s ease-in-out;
         }
         .nav-links {
             display: flex;
+            animation: slideInRight 1s ease-in-out;
         }
         .nav-links a {
-            color: var(--secondary-color);
+            color: var(--text-color);
             text-decoration: none;
             margin-left: 20px;
             font-weight: bold;
@@ -58,13 +69,43 @@
             height: 2px;
             bottom: -3px;
             left: 0;
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             transform-origin: bottom right;
             transition: transform 0.25s ease-out;
         }
         .nav-links a:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .hero {
             text-align: center;
@@ -206,11 +247,29 @@
             background-color: #008844;
             transform: translateY(-5px);
         }
-        .titanx-app {
-            background-color: var(--secondary-color);
+        .features-community-wrapper {
+            background: url('abu-dhabi-skyline.png') no-repeat center center;
+            background-size: cover;
             color: var(--text-color);
-            padding: 50px 0;
             text-align: center;
+            position: relative;
+        }
+        .features-community-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text visibility */
+            z-index: 1;
+        }
+        .features-community-wrapper .container {
+            position: relative;
+            z-index: 2;
+        }
+        .titanx-app {
+            padding: 50px 0;
         }
         .titanx-app h2 {
             font-size: 36px;
@@ -239,8 +298,8 @@
             transform: scale(1.05);
         }
         .titanx-app ul li img {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             margin-right: 10px;
         }
         .titanx-app p {
@@ -262,21 +321,76 @@
             background-color: #008844;
             transform: translateY(-5px);
         }
+        .community-site {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 50px 0;
+            text-align: center;
+        }
+        .community-site h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        .community-site p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .community-site .benefits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .community-site .benefit {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            width: 250px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+        .community-site .benefit:hover {
+            transform: scale(1.05);
+        }
+        .community-site .benefit h3 {
+            font-size: 20px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        .community-site .benefit p {
+            font-size: 16px;
+            margin: 0;
+        }
+        .community-site .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .community-site .cta-button:hover {
+            background-color: #333333;
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">TitanX</div>
-                <div class="nav-links">
-                    <a href="#about">About TitanX</a>
-                    <a href="https://www.titanxhub.com/" target="_blank">Projects</a>
-                    <a href="https://app.titanx.win/buy" target="_blank">Buy TITANX</a>
-                    <a href="https://app.titanx.win/stats" target="_blank">Stats</a>
-                    <a href="https://docs.titanx.win/titanx" target="_blank">Docs</a>
-                </div>
-            </nav>
+            <div class="logo">TitanX</div>
+            <div class="nav-links">
+                <a href="#about">About TitanX - Coming Soon!!</a>
+                <a href="https://www.titanxhub.com/" target="_blank">Projects</a>
+                <a href="https://app.titanx.win/buy" target="_blank">Buy TITANX</a>
+                <a href="https://app.titanx.win/stats" target="_blank">Stats</a>
+                <a href="https://docs.titanx.win/titanx" target="_blank">Docs</a>
+            </div>
         </div>
     </header>
 
@@ -307,27 +421,55 @@
             </div>
         </section>
 
-        <section class="titanx-app">
-            <div class="container">
-                <h2>TitanX Platform Features</h2>
-                <ul>
-                    <li><img src="mine-icon.png" alt="Mine"><strong>Mine: </strong> Participate in TitanX mining</li>
-                    <li><img src="stake-icon.png" alt="Stake"><strong>Stake: </strong> Lock your TitanX tokens to earn rewards</li>
-                    <li><img src="payouts-icon.png" alt="Payouts"><strong>Payouts: </strong> Receive your earned rewards</li>
-                    <li><img src="buy-burn-icon.png" alt="Buy & Burn"><strong>Buy & Burn: </strong> Contribute to reducing TitanX supply</li>
-                    <li><img src="stats-icon.png" alt="Stats"><strong>Stats: </strong> View real-time TitanX statistics</li>
-                </ul>
-                <p>Experience the full potential of TitanX by going to the app.</p>
-                <a href="https://app.titanx.win/buy" target="_blank" class="cta-button">Launch App</a>
-            </div>
-        </section>
+        <div class="features-community-wrapper">
+            <section class="titanx-app">
+                <div class="container">
+                    <h2>TitanX Platform Features</h2>
+                    <ul>
+                        <li><img src="mine-icon.png" alt="Mine"><strong>Mine:</strong> Participate in TitanX mining</li>
+                        <li><img src="stake-icon.png" alt="Stake"><strong>Stake:</strong> Lock your TitanX tokens to earn rewards</li>
+                        <li><img src="payouts-icon.png" alt="Payouts"><strong>Payouts:</strong> Receive your earned rewards</li>
+                        <li><img src="buy-burn-icon.png" alt="Buy & Burn"><strong>Buy & Burn:</strong> Contribute to reducing TitanX supply</li>
+                        <li><img src="stats-icon.png" alt="Stats"><strong>Stats:</strong> View real-time TitanX statistics</li>
+                    </ul>
+                    <p>Experience the full potential of TitanX by checking out the app!</p>
+                    <a href="https://app.titanx.win/buy" target="_blank" class="cta-button">Launch App</a>
+                </div>
+            </section>
+
+            <section class="community-site">
+                <div class="container">
+                    <h2>Join the TitanX Community</h2>
+                    <p>Discover an amazing community site where users can interact with all the projects built on TitanX. Be a part of an ever-growing ecosystem that thrives on collaboration and innovation.</p>
+                    <div class="benefits">
+                        <div class="benefit">
+                            <h3>Engage with Projects</h3>
+                            <p>Interact with various projects built on TitanX and contribute to their growth.</p>
+                        </div>
+                        <div class="benefit">
+                            <h3>Collaborate and Innovate</h3>
+                            <p>Join a community that values collaboration and innovation, driving the ecosystem forward.</p>
+                        </div>
+                        <div class="benefit">
+                            <h3>Exclusive Access</h3>
+                            <p>Get exclusive access to new features, updates, and community events.</p>
+                        </div>
+                        <div class="benefit">
+                            <h3>Investment Opportunities</h3>
+                            <p>Explore new investment opportunities within the TitanX ecosystem.</p>
+                        </div>
+                    </div>
+                    <a href="https://www.titanxhub.com/" target="_blank" class="cta-button">Visit TitanX Hub</a>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
         <section class="about-titanx">
             <div class="container">
                 <h2>Why TitanX?</h2>
-                <p>TitanX is designed to reduce supply, add programmatic buy pressure through smart contracts, and drive demand through game theory mechanics.</p>
+                <p>TitanX is designed to reduce supply, add programmatic buy pressure through smart contracts, and drive demand game theory mechanics.</p>
                 <ul>
                     <li><strong>Massive buy & burn pressure:</strong> Small liquidity pools with constant buy & burn mechanisms make TitanX more scarce over time.</li>
                     <li><strong>Large portion of supply staked:</strong> Users can earn massive ETH yield by locking up their coins, reducing the available supply.</li>
@@ -340,9 +482,6 @@
             </div>
         </section>
         <div class="container">
-            <p>TitanX Token: 0xF19308...EC6665B1</p>
-            <p>TitanX Buy & Burn V1: 0x1393ad...d25c23a5</p>
-            <p>TitanX Buy & Burn V2: 0x410e10...5e7D5404</p>
             <p><a href="disclaimer.html" style="color: var(--accent-color);">Disclaimer</a></p>
         </div>
     </footer>
