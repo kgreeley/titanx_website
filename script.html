@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TitanX: Community-Driven Cryptocurrency</title>
+    <style>
+        :root {
+            --primary-color: #00aa55; /* Chinese dragon green */
+            --secondary-color: #000000; /* Black */
+            --text-color: #ffffff; /* White */
+            --accent-color: #ffcc00; /* Bright yellow for accents */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #333333 100%);
+            color: var(--text-color);
+            transition: background 0.5s;
+        }
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        .nav-links {
+            display: flex;
+        }
+        .nav-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background-color: var(--accent-color);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            animation: fadeIn 2s ease-in-out;
+            background: url('./titanX.jpeg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text visibility */
+            z-index: 1;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button:hover {
+            background-color: #008844;
+            transform: translateY(-5px);
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 0;
+            animation: slideIn 2s ease-in-out;
+        }
+        .feature {
+            text-align: center;
+            max-width: 300px;
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: scale(1.05);
+        }
+        .feature img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .about-titanx {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 50px 0;
+            text-align: center;
+            position: relative;
+        }
+        .about-titanx::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./background-pattern.png') repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .about-titanx .container {
+            position: relative;
+            z-index: 1;
+        }
+        .about-titanx h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        .about-titanx p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .about-titanx ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        .about-titanx ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .about-titanx ul li::before {
+            content: '✔';
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        .about-titanx .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .about-titanx .cta-button:hover {
+            background-color: #008844;
+            transform: translateY(-5px);
+        }
+        .titanx-app {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 50px 0;
+            text-align: center;
+        }
+        .titanx-app h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        .titanx-app ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .titanx-app ul li {
+            font-size: 18px;
+            margin: 10px 20px;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .titanx-app ul li:hover {
+            transform: scale(1.05);
+        }
+        .titanx-app ul li img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .titanx-app p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .titanx-app .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .titanx-app .cta-button:hover {
+            background-color: #008844;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">TitanX</div>
+                <div class="nav-links">
+                    <a href="#about">About TitanX</a>
+                    <a href="https://www.titanxhub.com/" target="_blank">Projects</a>
+                    <a href="https://app.titanx.win/buy" target="_blank">Buy TITANX</a>
+                    <a href="https://app.titanx.win/stats" target="_blank">Stats</a>
+                    <a href="https://docs.titanx.win/titanx" target="_blank">Docs</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Welcome to TitanX</h1>
+                <p>A community-driven cryptocurrency built on first principles</p>
+                <a href="https://docs.titanx.win/titanx" target="_blank" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <img src="community-icon.png" alt="Community-Driven" style="width: 100px; height: 100px;">
+                <h2>Community-Driven</h2>
+                <p>TitanX prioritizes its community, ensuring every voice is heard and valued.</p>
+            </div>
+            <div class="feature">
+                <img src="fire.png" alt="Buy and Burn" style="width: 100px; height: 100px;">
+                <h2>🚀 Proof of Burn 2.0</h2>
+                <p>Users can burn their TITANX to "transform" it into other projects.</p>
+            </div>
+            <div class="feature">
+                <img src="fair-launch.png" alt="Fair Launch" style="width: 100px; height: 100px;">
+                <h2>Fair Launch</h2>
+                <p>No ICO, no seed rounds, promoting fairness and security for all holders.</p>
+            </div>
+        </section>
+
+        <section class="titanx-app">
+            <div class="container">
+                <h2>TitanX Platform Features</h2>
+                <ul>
+                    <li><img src="mine-icon.png" alt="Mine"><strong>Mine: </strong> Participate in TitanX mining</li>
+                    <li><img src="stake-icon.png" alt="Stake"><strong>Stake: </strong> Lock your TitanX tokens to earn rewards</li>
+                    <li><img src="payouts-icon.png" alt="Payouts"><strong>Payouts: </strong> Receive your earned rewards</li>
+                    <li><img src="buy-burn-icon.png" alt="Buy & Burn"><strong>Buy & Burn: </strong> Contribute to reducing TitanX supply</li>
+                    <li><img src="stats-icon.png" alt="Stats"><strong>Stats: </strong> View real-time TitanX statistics</li>
+                </ul>
+                <p>Experience the full potential of TitanX by going to the app.</p>
+                <a href="https://app.titanx.win/buy" target="_blank" class="cta-button">Launch App</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section class="about-titanx">
+            <div class="container">
+                <h2>Why TitanX?</h2>
+                <p>TitanX is designed to reduce supply, add programmatic buy pressure through smart contracts, and drive demand through game theory mechanics.</p>
+                <ul>
+                    <li><strong>Massive buy & burn pressure:</strong> Small liquidity pools with constant buy & burn mechanisms make TitanX more scarce over time.</li>
+                    <li><strong>Large portion of supply staked:</strong> Users can earn massive ETH yield by locking up their coins, reducing the available supply.</li>
+                    <li><strong>Proof of Burn 2.0:</strong> Developers can use TitanX to launch their own tokens, burning TitanX out of existence forever.</li>
+                    <li><strong>Daily reductions:</strong> The amount of TitanX that can be mined is reduced daily, making it harder and more expensive to produce over time.</li>
+                    <li><strong>Leverage on ETH value:</strong> As ETH becomes more valuable, so does TitanX, due to its direct tie to ETH.</li>
+                </ul>
+                <p>Join the TitanX community today and be part of a revolutionary cryptocurrency project!</p>
+                <a href="https://app.titanx.win/buy" target="_blank" class="cta-button">How To Buy</a>
+            </div>
+        </section>
+        <div class="container">
+            <p>TitanX Token: 0xF19308...EC6665B1</p>
+            <p>TitanX Buy & Burn V1: 0x1393ad...d25c23a5</p>
+            <p>TitanX Buy & Burn V2: 0x410e10...5e7D5404</p>
+            <p><a href="disclaimer.html" style="color: var(--accent-color);">Disclaimer</a></p>
+        </div>
+    </footer>
+</body>
+</html>
